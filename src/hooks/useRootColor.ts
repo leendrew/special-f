@@ -3,7 +3,7 @@ import { usePreferredDark } from '@vueuse/core';
 import * as colors from 'tailwindcss/colors';
 import { cssVar } from '@/constants';
 
-type ColorProps = {
+type UserRootColorProps = {
   text: string;
   bg: string;
 };
@@ -19,11 +19,11 @@ const defaultColors = {
   },
 };
 
-export function useRootColor(props?: ColorProps) {
+export function useRootColor(props?: UserRootColorProps) {
   const rootElement = document.documentElement;
   const isDark = usePreferredDark();
 
-  const change = ({ text, bg }: ColorProps) => {
+  const change = ({ text, bg }: UserRootColorProps) => {
     rootElement.style.setProperty(cssVar.textColor, text);
     rootElement.style.setProperty(cssVar.bgColor, bg);
   };
