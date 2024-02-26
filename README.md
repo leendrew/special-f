@@ -11,6 +11,7 @@ Create a simple congratulations and share it immediately
   - Change single word in section with multiple values
   - Text typing effect
   - ~~Confetti effect~~
+- ~~Templates~~
 - ~~Sections builder~~
 - ~~Own url shortener~~
 - ~~Managing created urls~~
