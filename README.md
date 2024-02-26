@@ -1,6 +1,6 @@
-# Happy Birthday for Friends
+# Congratulations for Friends
 
-Create a simple birthday greeting for a friend and share it with him immediately
+Create a simple congratulations and share it immediately
 
 ~~[Deployed](https://special-ff-hb.pages.dev)~~
 
@@ -11,14 +11,15 @@ Create a simple birthday greeting for a friend and share it with him immediately
   - Change single word in section with multiple values
   - Text typing effect
   - ~~Confetti effect~~
-- ~~Url shortener~~
+- ~~Sections builder~~
+- ~~Own url shortener~~
 - ~~Managing created urls~~
-- Editing
 
 ## Stack
 
 - Vue 3
 - ~~Nuxt 3~~
+- Tailwind CSS
 - Vue Use Core, Vue Use Motion, ~~Vee Validate~~
 
 ## Installation
