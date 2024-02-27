@@ -1,6 +1,5 @@
 import { onMounted, onUnmounted } from 'vue';
 import { usePreferredDark } from '@vueuse/core';
-import * as colors from 'tailwindcss/colors';
 import { cssVar } from '@/constants';
 
 type UserRootColorProps = {
@@ -10,12 +9,12 @@ type UserRootColorProps = {
 
 const defaultColors = {
   light: {
-    text: colors.neutral[800],
-    bg: colors.neutral[200],
+    text: '#262626',
+    bg: '#e5e5e5',
   },
   dark: {
-    text: colors.neutral[200],
-    bg: colors.neutral[800],
+    text: '#e5e5e5',
+    bg: '#262626',
   },
 };
 

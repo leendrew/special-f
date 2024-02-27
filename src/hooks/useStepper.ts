@@ -25,9 +25,16 @@ export function useStepper({ max }: UseStepperProps) {
     currentStep.value -= 1;
   };
 
+  const resetStep = () => {
+    currentStep.value = 0;
+  };
+
   return {
     currentStep,
     nextStep,
     prevStep,
+    resetStep,
+    isFirstStep,
+    isLastStep,
   };
 }
