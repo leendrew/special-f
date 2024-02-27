@@ -21,7 +21,7 @@ Create a simple congratulations and share it immediately
 - Vue 3
 - ~~Nuxt 3~~
 - Tailwind CSS
-- Vue Use Core, Vue Use Motion, ~~Vee Validate~~
+- VueUse Core, VueUse Motion, ~~Vee Validate~~
 
 ## Installation
 
