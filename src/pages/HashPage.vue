@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router';
+import AppContainer from '@/components/ui/AppContainer.vue';
+import AppButton from '@/components/ui/AppButton.vue';
 import SectionsResolver from '@/components/sections/SectionsResolver.vue';
 import type { Data } from '@/components/sections/base.types';
 
@@ -18,13 +20,9 @@ const navigate = () => router.push({ name: 'home' });
 
 <template>
   <main class="main py-4">
-    <div class="container mx-auto my-0">
-      <div class="flex flex-col gap-2">
-        <h1>Hash Page</h1>
-        {{ data }}
-        <button @click="navigate">To Home</button>
-        <SectionsResolver v-bind="data" />
-      </div>
-    </div>
+    <AppContainer>
+      <AppButton @click="navigate">To Home</AppButton>
+      <SectionsResolver v-bind="data" />
+    </AppContainer>
   </main>
 </template>
