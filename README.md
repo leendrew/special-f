@@ -2,7 +2,7 @@
 
 Create a simple congratulations and share it immediately
 
-[Deployed](https://leendrew.github.io/special-f)
+[Deployed](https://special-f.pages.dev)
 
 ## Features
 
