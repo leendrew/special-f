@@ -13,7 +13,7 @@ onMounted(() => {
 
 <template>
   <div
-    v-motion="'v1Base'"
+    v-motion
     v-bind="rest"
   >
     <slot />

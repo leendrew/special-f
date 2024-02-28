@@ -5,7 +5,7 @@ const { color, bgColor } = defineProps<{ color?: string; bgColor?: string }>();
 <template>
   <button
     v-bind="$attrs"
-    class="block px-4 min-h-8 outline-offset-2 rounded-md duration-200 ease-out"
+    class="block px-4 min-h-8 text-base outline-offset-2 rounded-md duration-200 ease-out"
     :style="{
       color,
       backgroundColor: bgColor,
