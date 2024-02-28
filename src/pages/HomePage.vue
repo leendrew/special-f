@@ -33,4 +33,15 @@ const navigate = () => router.push({ name: 'hash', params: { hash: hashedData.va
       </AppButton>
     </AppContainer>
   </main>
+  <footer class="min-h-[2rem]">
+    <AppContainer class="text-center">
+      by
+      <a
+        class="underline"
+        href="https://github.com/leendrew"
+      >
+        @leendrew
+      </a>
+    </AppContainer>
+  </footer>
 </template>
