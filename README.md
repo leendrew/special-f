@@ -1,8 +1,8 @@
-# Congratulations for Friends
+# Special for ?
 
 Create a simple congratulations and share it immediately
 
-~~[Deployed](https://special-ff-hb.pages.dev)~~
+[Deployed](https://leendrew.github.io/special-f)
 
 ## Features
 
