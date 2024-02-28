@@ -1,3 +1,10 @@
+import { minDuration } from '@/constants';
+
 export function calcTextDuration(text: string) {
-  return Math.ceil(text.length / 16) * 1000;
+  const duration = Math.ceil(text.length / 14) * 1000;
+  if (duration < minDuration) {
+    return minDuration;
+  }
+
+  return duration;
 }
