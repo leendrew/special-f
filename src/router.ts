@@ -1,7 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import HomePage from '@/pages/HomePage.vue';
 import HashPage from '@/pages/HashPage.vue';
+import { envConfig } from '@/config';
 
 const routes = [
   {
@@ -16,7 +17,9 @@ const routes = [
   },
 ] satisfies RouteRecordRaw[];
 
+const history = envConfig.isDev ? createWebHistory() : createWebHashHistory();
+
 export const router = createRouter({
-  history: createWebHistory(),
+  history,
   routes,
 });
