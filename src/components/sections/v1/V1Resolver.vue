@@ -42,7 +42,7 @@ const onRepeat = () => {
 </script>
 
 <template>
-  <div class="p-4 rounded-lg text-2xl">
+  <div class="p-4 rounded-lg text-4xl">
     <component
       :key="currentStep"
       :is="v1Map[currentSection.type]"

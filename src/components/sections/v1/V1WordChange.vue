@@ -7,8 +7,8 @@ import { calcTextDuration } from '@/utils';
 const { text, target, variants, duration, variantDuration, variantDelay } = withDefaults(
   defineProps<V1SectionWordChange>(),
   {
-    variantDuration: 1500,
-    variantDelay: 600,
+    variantDuration: 1200,
+    variantDelay: 500,
   },
 );
 const textDuration = calcTextDuration(text);
