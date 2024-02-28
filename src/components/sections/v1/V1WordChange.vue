@@ -8,7 +8,7 @@ const { text, target, variants, duration, variantDuration, variantDelay } = with
   defineProps<V1SectionWordChange>(),
   {
     variantDuration: 1500,
-    variantDelay: 200,
+    variantDelay: 600,
   },
 );
 const textDuration = calcTextDuration(text);
@@ -19,6 +19,7 @@ const targetIndex = words.indexOf(target);
 
 const currentIndex = ref(0);
 const currentVariant = computed(() => variants[currentIndex.value]);
+const currentDuration = computed(() => (currentIndex.value === 0 ? 0 : variantDelay));
 
 const changeWord = () => {
   const intervalId = setInterval(() => {
@@ -62,16 +63,27 @@ onMounted(() => {
           :key="currentIndex"
           class="inline-block"
           v-motion
-          :duration="variantDelay"
           :initial="{
             y: -10,
             opacity: 0,
+            rotateX: 90,
           }"
           :enter="{
             y: 0,
             opacity: 1,
+            rotateX: 0,
             transition: {
+              ease: 'linear',
               bounce: 0,
+              opacity: {
+                duration: currentDuration / 2,
+              },
+              y: {
+                duration: currentDuration,
+              },
+              rotateX: {
+                duration: currentDuration,
+              },
             },
           }"
         >
