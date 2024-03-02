@@ -3,4 +3,4 @@ export const cssVar = {
   bgColor: '--bg-color',
 } as const;
 
-export const minDuration = 1500 as const;
+export const MIN_DURATION = 1500 as const;
