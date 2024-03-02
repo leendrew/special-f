@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 import AppContainer from '@/components/ui/AppContainer.vue';
 import AppButton from '@/components/ui/AppButton.vue';
 import type { Data } from '@/components/sections/base.types';
+import { hashService } from '@/utils';
 
 const router = useRouter();
 
@@ -13,7 +14,7 @@ const data = {
   bgColor: '#fdf4ff',
 } satisfies Data;
 
-const hashedData = computed(() => btoa(JSON.stringify(data)));
+const hashedData = computed(() => hashService.encode(data));
 console.log('@hash length', hashedData.value.length);
 
 const navigate = () => router.push({ name: 'hash', params: { hash: hashedData.value } });

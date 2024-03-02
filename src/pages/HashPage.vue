@@ -2,13 +2,13 @@
 import { useRoute } from 'vue-router';
 import AppContainer from '@/components/ui/AppContainer.vue';
 import SectionsResolver from '@/components/sections/SectionsResolver.vue';
-import type { Data } from '@/components/sections/base.types';
+import { hashService } from '@/utils';
 
 const {
   params: { hash },
 } = useRoute();
 
-const data = JSON.parse(atob(hash as string)) as Data;
+const data = hashService.decode(hash as string);
 if (!('version' in data)) {
   console.error('wrong hash value');
 }
