@@ -1,18 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
-import HomePage from '@/pages/HomePage.vue';
-import HashPage from '@/pages/HashPage.vue';
 
 const routes = [
   {
     name: 'home',
     path: '/',
-    component: HomePage,
+    component: () => import('@/pages/HomePage.vue'),
   },
   {
     name: 'hash',
     path: '/:hash',
-    component: HashPage,
+    component: () => import('@/pages/HashPage.vue'),
+  },
+  {
+    name: '404',
+    path: '*',
+    component: () => import('@/pages/404Page.vue'),
   },
 ] satisfies RouteRecordRaw[];
 
