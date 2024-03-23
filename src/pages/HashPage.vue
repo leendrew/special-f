@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import AppContainer from '@/components/ui/AppContainer.vue';
 import SectionsResolver from '@/components/sections/SectionsResolver.vue';
 import { hashService } from '@/utils';
@@ -7,10 +7,11 @@ import { hashService } from '@/utils';
 const {
   params: { hash },
 } = useRoute();
+const router = useRouter();
 
 const data = hashService.decode(hash as string);
 if (!('version' in data)) {
-  console.error('wrong hash value');
+  router.push({ name: 'error' });
 }
 </script>
 
