@@ -11,7 +11,8 @@ export type WelcomeData = {
 
 export type BaseData<V extends number, S> = {
   version: V;
-  sections?: S;
+  welcomeData: WelcomeData;
+  sectionsData: S;
   textColor: string;
   bgColor: string;
 };

@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { useStepper } from '@/hooks';
-import AppButton from '@/components/ui/AppButton.vue';
 import V1Default from './V1Default.vue';
 import V1WordChange from './V1WordChange.vue';
 import V1Typing from './V1Typing.vue';
 import type { V1Data } from './v1.types.ts';
 
-const { sections } = defineProps<Required<Pick<V1Data, 'sections'>>>();
+const { sectionsData } = defineProps<Required<Pick<V1Data, 'sectionsData'>>>();
 
 const v1Map = {
   default: V1Default,
@@ -16,9 +15,9 @@ const v1Map = {
 };
 
 const { currentStep, nextStep, prevStep, resetStep, isLastStep } = useStepper({
-  max: sections.length - 1,
+  max: sectionsData.length - 1,
 });
-const currentSection = computed(() => sections[currentStep.value]);
+const currentSection = computed(() => sectionsData[currentStep.value]);
 
 const isRepeatBtnShow = ref(false);
 const repeatBtnShowDelay = 1000;
