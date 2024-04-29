@@ -14,7 +14,7 @@ const routes = [
   },
   {
     name: '404',
-    path: '*',
+    path: '/:pathMatch(.*)*',
     component: () => import('@/pages/404Page.vue'),
   },
 ] satisfies RouteRecordRaw[];
