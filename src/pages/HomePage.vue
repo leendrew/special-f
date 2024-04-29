@@ -3,6 +3,7 @@ import { useRouter } from 'vue-router';
 import { dataTest } from '@/config/test.data';
 import MainLayout from '@/components/ui/layouts/MainLayout.vue';
 import { encodeService, testCompression, decodeService } from '@/utils';
+import { ROUTE } from '@/constants';
 
 const utf8Str = JSON.stringify(dataTest);
 const hexStr = decodeService.arrayBufferToHexString(new TextEncoder().encode(utf8Str));
@@ -47,7 +48,7 @@ const router = useRouter();
 const hashedData = encodeService.stringToBase64(JSON.stringify(dataTest));
 
 const onNavigateClick = () => {
-  router.push({ name: 'hash', params: { hash: hashedData } });
+  router.push({ name: ROUTE.hash.name, params: { hash: hashedData } });
 };
 </script>
 

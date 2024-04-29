@@ -1,3 +1,18 @@
+export const ROUTE = {
+  home: {
+    name: 'home',
+    path: '/',
+  },
+  hash: {
+    name: 'hash',
+    path: ':hash',
+  },
+  error: {
+    name: '404',
+    path: ':pathMatch(.*)*',
+  },
+} as const;
+
 export const CSS_VAR = {
   textColor: '--text-color',
   bgColor: '--bg-color',

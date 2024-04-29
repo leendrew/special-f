@@ -3,6 +3,7 @@ import { useRoute, useRouter } from 'vue-router';
 import MainLayout from '@/components/ui/layouts/MainLayout.vue';
 import SectionsResolver from '@/components/sections/SectionsResolver.vue';
 import { encodeService } from '@/utils';
+import { ROUTE } from '@/constants';
 
 const {
   params: { hash },
@@ -14,7 +15,7 @@ const [version, welcomeData, sectionsData] = JSON.parse(
 );
 
 if (typeof version !== 'number') {
-  router.push({ name: '404' });
+  router.push({ name: ROUTE.error.name });
 }
 </script>
 
