@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { WelcomeData } from './base.types';
+import { COLOR_VALUE } from '@/constants';
 
 const { text, btnTitle } = defineProps<{ text: WelcomeData[0]; btnTitle: WelcomeData[1] }>();
 const emit = defineEmits(['play:start']);
@@ -13,8 +14,8 @@ const onPlayStart = () => emit('play:start');
     <AppButton
       class="hover:opacity-80 mt-4 self-center"
       type="submit"
-      :color="btn.textColor"
-      :bgColor="btn.bgColor"
+      :color="COLOR_VALUE.welcome.text"
+      :bgColor="COLOR_VALUE.welcome.bg"
       @click="onPlayStart"
     >
       {{ btnTitle }}

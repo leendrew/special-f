@@ -4,6 +4,7 @@ import { useRootColor } from '@/hooks';
 import SectionWelcome from './SectionWelcome.vue';
 import V1Resolver from './v1/V1Resolver.vue';
 import type { Data } from './base.types';
+import { COLOR_VALUE } from '@/constants';
 
 // FIX bug, if sectionsData.length === 1, repeat don't work
 
@@ -31,7 +32,8 @@ const onPlayStart = () => {
   <div class="max-w-screen-sm mx-auto mt-72 text-2xl">
     <template v-if="!isPlaying">
       <SectionWelcome
-        v-bind="welcomeData"
+        :text
+        :btnTitle
         @play:start="onPlayStart"
       />
     </template>
