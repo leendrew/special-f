@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted, useAttrs } from 'vue';
 
-const { text, duration, ...rest } = defineProps<{ text: string; duration: number; rest?: {} }>();
+const { duration } = defineProps<{ duration: number }>();
 const emit = defineEmits(['step:next', 'step:prev']);
+const attrs = useAttrs();
 
 onMounted(() => {
   setTimeout(() => {
@@ -13,8 +14,19 @@ onMounted(() => {
 
 <template>
   <div
-    v-motion
-    v-bind="rest"
+    v-motion="'v1'"
+    :initial="{
+      y: -10,
+      opacity: 0,
+    }"
+    :enter="{
+      y: 0,
+      opacity: 1,
+    }"
+    :leave="{
+      opacity: 0,
+    }"
+    v-bind="attrs"
   >
     <slot />
   </div>

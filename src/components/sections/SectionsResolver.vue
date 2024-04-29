@@ -5,10 +5,19 @@ import SectionWelcome from './SectionWelcome.vue';
 import V1Resolver from './v1/V1Resolver.vue';
 import type { Data } from './base.types';
 
-const { version, welcomeData, sectionsData, textColor, bgColor } = defineProps<Data>();
-useRootColor({ text: textColor, bg: bgColor });
+// FIX bug, if sectionsData.length === 1, repeat don't work
 
-const resolver = {
+const { version, welcomeData, sectionsData } = defineProps<{
+  version: Data[0];
+  welcomeData: Data[1];
+  sectionsData: Data[2];
+}>();
+
+useRootColor({ text: COLOR_VALUE.section.text, bg: COLOR_VALUE.section.bg });
+
+const [text, btnTitle] = welcomeData;
+
+const resolverMap = {
   1: V1Resolver,
 };
 
@@ -28,8 +37,8 @@ const onPlayStart = () => {
     </template>
     <template v-else>
       <component
-        :is="resolver[version]"
-        :sectionsData="sectionsData"
+        :is="resolverMap[version]"
+        :sectionsData
       />
     </template>
   </div>

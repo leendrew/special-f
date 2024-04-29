@@ -4,18 +4,19 @@ import V1Base from './V1Base.vue';
 import type { V1SectionWordChange } from './v1.types';
 import { calcTextDuration } from '@/utils';
 
-const { text, target, variants, duration, variantDuration, variantDelay } = withDefaults(
-  defineProps<V1SectionWordChange>(),
-  {
-    variantDuration: 1200,
-    variantDelay: 500,
-  },
-);
+const { data } = defineProps<{ data: V1SectionWordChange }>();
+
+const [, text, targetIndex, variants] = data;
+
+const variantDuration = 1200;
+const variantDelay = 500;
+
 const textDuration = calcTextDuration(text);
-const totalDuration = duration || textDuration + (variants.length - 1) * variantDuration;
+const totalDuration = textDuration + variants.length * variantDuration;
 
 const words = text.split(' ');
-const targetIndex = words.indexOf(target);
+// because displayed text excluded target word
+variants.unshift(words[targetIndex]);
 
 const currentIndex = ref(0);
 const currentVariant = computed(() => variants[currentIndex.value]);
@@ -42,31 +43,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <V1Base
-    :text="text"
-    :duration="totalDuration"
-    :initial="{
-      y: -10,
-      opacity: 0,
-    }"
-    :enter="{
-      y: 0,
-      opacity: 1,
-      transition: {
-        bounce: 0,
-      },
-    }"
-  >
+  <V1Base :duration="totalDuration">
     <template v-for="(word, index) in words">
       <template v-if="index === targetIndex">
         <span
           :key="currentIndex"
           class="inline-block"
-          v-motion
+          v-motion="'v1WordChange'"
           :initial="{
             y: -10,
             opacity: 0,
-            rotateX: 90,
+            rotateX: -90,
           }"
           :enter="{
             y: 0,
@@ -74,7 +61,6 @@ onMounted(() => {
             rotateX: 0,
             transition: {
               ease: 'linear',
-              bounce: 0,
               opacity: {
                 duration: currentDuration / 2,
               },

@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import V1Base from './V1Base.vue';
 import type { V1SectionTyping } from './v1.types';
-import { randomBetween } from '@/utils';
+import { randomService } from '@/utils';
 
-const { text, charDuration } = withDefaults(defineProps<V1SectionTyping>(), {
-  charDuration: 150,
-});
-const totalDuration = charDuration * text.length + 500;
+const { data } = defineProps<{ data: V1SectionTyping }>();
+
+const [, text] = data;
+
+const charDuration = 150;
+const totalDuration = charDuration * text.length + 1500;
 const charDurationDispersion = 50;
 
 const chars = text.split('');
@@ -14,8 +16,11 @@ const chars = text.split('');
 
 <template>
   <V1Base
-    :text="text"
     :duration="totalDuration"
+    :initial="{
+      y: 0,
+      opacity: 1,
+    }"
   >
     <template v-for="(char, index) in chars">
       <span
@@ -29,7 +34,8 @@ const chars = text.split('');
             ease: 'linear',
             duration: 1,
             delay:
-              index * charDuration + randomBetween(-charDurationDispersion, charDurationDispersion),
+              index * charDuration +
+              randomService.randomBetween(-charDurationDispersion, charDurationDispersion),
           },
         }"
       >

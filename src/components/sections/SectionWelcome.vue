@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { WelcomeData } from './base.types';
 
-const { message, btn } = defineProps<WelcomeData>();
+const { text, btnTitle } = defineProps<{ text: WelcomeData[0]; btnTitle: WelcomeData[1] }>();
 const emit = defineEmits(['play:start']);
 
 const onPlayStart = () => emit('play:start');
@@ -9,7 +9,7 @@ const onPlayStart = () => emit('play:start');
 
 <template>
   <div class="text-center flex flex-col gap-4 p-4 rounded-lg">
-    <p>{{ message }}</p>
+    <p>{{ text }}</p>
     <AppButton
       class="hover:opacity-80 mt-4 self-center"
       type="submit"
@@ -17,7 +17,7 @@ const onPlayStart = () => emit('play:start');
       :bgColor="btn.bgColor"
       @click="onPlayStart"
     >
-      {{ btn.title }}
+      {{ btnTitle }}
     </AppButton>
   </div>
 </template>

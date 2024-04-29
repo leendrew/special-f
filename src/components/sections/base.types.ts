@@ -1,20 +1,9 @@
 import type { V1Data } from './v1/v1.types';
 
-export type WelcomeData = {
-  message: string;
-  btn: {
-    title: string;
-    textColor: string;
-    bgColor: string;
-  };
-};
+type WelcomeText = string;
+type WelcomeBtnTitle = string;
+export type WelcomeData = [WelcomeText, WelcomeBtnTitle];
 
-export type BaseData<V extends number, S> = {
-  version: V;
-  welcomeData: WelcomeData;
-  sectionsData: S;
-  textColor: string;
-  bgColor: string;
-};
+export type BaseData<Version extends number, SectionData> = [Version, WelcomeData, SectionData];
 
 export type Data = V1Data;

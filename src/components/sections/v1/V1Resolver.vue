@@ -1,17 +1,20 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+import { useMotions } from '@vueuse/motion';
 import { useStepper } from '@/hooks';
 import V1Default from './V1Default.vue';
 import V1WordChange from './V1WordChange.vue';
 import V1Typing from './V1Typing.vue';
 import type { V1Data } from './v1.types.ts';
 
-const { sectionsData } = defineProps<Required<Pick<V1Data, 'sectionsData'>>>();
+const { sectionsData } = defineProps<{ sectionsData: V1Data[2] }>();
 
-const v1Map = {
-  default: V1Default,
-  'word-change': V1WordChange,
-  typing: V1Typing,
+const motions = useMotions();
+
+const v1SectionMap = {
+  1: V1Default,
+  2: V1WordChange,
+  3: V1Typing,
 };
 
 const { currentStep, nextStep, prevStep, resetStep, isLastStep } = useStepper({
@@ -42,13 +45,19 @@ const onRepeat = () => {
 
 <template>
   <div class="p-4 rounded-lg text-4xl">
-    <component
-      :key="currentStep"
-      :is="v1Map[currentSection.type]"
-      v-bind="currentSection"
-      @step:next="onNextStep"
-      @step:prev="prevStep"
-    />
+    <Transition
+      mode="out-in"
+      @leave="(_, done) => motions.v1.leave(done)"
+    >
+      <!-- @vue-expect-error -->
+      <component
+        :key="currentStep"
+        :is="v1SectionMap[currentSection[0]]"
+        :data="currentSection"
+        @step:next="onNextStep"
+        @step:prev="prevStep"
+      />
+    </Transition>
     <template v-if="isRepeatBtnShow">
       <AppButton
         class="mt-6 mx-auto"
@@ -60,10 +69,6 @@ const onRepeat = () => {
         :enter="{
           y: 0,
           opacity: 1,
-        }"
-        :leave="{
-          y: -1000,
-          opacity: 0,
         }"
         @click="onRepeat"
       >

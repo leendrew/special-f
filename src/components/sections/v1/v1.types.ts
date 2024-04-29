@@ -1,26 +1,19 @@
 import type { BaseData } from '../base.types';
 
-export type V1SectionDefault = {
-  type: 'default';
-  text: string;
-  duration?: number;
-};
+type SectionText = string;
 
-export type V1SectionWordChange = {
-  type: 'word-change';
-  text: string;
-  duration?: number;
-  target: string;
-  variants: string[];
-  variantDuration?: number;
-  variantDelay?: number;
-};
+export type V1SectionDefault = [1, SectionText];
 
-export type V1SectionTyping = {
-  type: 'typing';
-  text: string;
-  charDuration?: number;
-};
+type SectionWordChangeTarget = number;
+type SectionWordChangeVariants = string[];
+export type V1SectionWordChange = [
+  2,
+  SectionText,
+  SectionWordChangeTarget,
+  SectionWordChangeVariants,
+];
+
+export type V1SectionTyping = [3, SectionText];
 
 export type V1Section = V1SectionDefault | V1SectionWordChange | V1SectionTyping;
 
