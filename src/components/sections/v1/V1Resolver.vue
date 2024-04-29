@@ -49,7 +49,7 @@ const onRepeat = () => {
       mode="out-in"
       @leave="(_, done) => motions.v1.leave(done)"
     >
-      <!-- @vue-expect-error -->
+      <!-- @vue-expect-error union -->
       <component
         :key="currentStep"
         :is="v1SectionMap[currentSection[0]]"
