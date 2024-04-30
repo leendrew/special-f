@@ -1,11 +1,21 @@
-export const encodeService = {
-  stringToBase64(string: string): string {
+export const encodingService = {
+  utf8StringToBase64String(string: string): string {
     return btoa(unescape(encodeURIComponent(string)));
   },
-};
+  utf8StringToArrayBuffer(utf8String: string): ArrayBuffer {
+    return new TextEncoder().encode(utf8String);
+  },
+  base64StringToArrayBuffer(base64String: string): ArrayBuffer {
+    const binaryString = atob(base64String);
+    const bytes = new Uint8Array(binaryString.length);
 
-export const decodeService = {
-  base64ToString(base64String: string): string {
+    binaryString.split('').forEach((char, index) => {
+      bytes[index] = char.charCodeAt(0);
+    });
+
+    return bytes.buffer;
+  },
+  base64StringToUtf8String(base64String: string): string {
     return decodeURIComponent(escape(atob(base64String)));
   },
   arrayBufferToUtf8String(arrayBuffer: ArrayBuffer): string {
