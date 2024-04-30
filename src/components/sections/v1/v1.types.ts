@@ -1,19 +1,19 @@
-import type { BaseData } from '../base.types';
+import type { SectionType, BaseData } from '../base.types';
 
 type SectionText = string;
 
-export type V1SectionDefault = [1, SectionText];
+export type V1SectionDefault = [SectionType['default'], SectionText];
 
 type SectionWordChangeTarget = number;
 type SectionWordChangeVariants = string[];
 export type V1SectionWordChange = [
-  2,
+  SectionType['wordChange'],
   SectionText,
   SectionWordChangeTarget,
   SectionWordChangeVariants,
 ];
 
-export type V1SectionTyping = [3, SectionText];
+export type V1SectionTyping = [SectionType['typing'], SectionText];
 
 export type V1Section = V1SectionDefault | V1SectionWordChange | V1SectionTyping;
 
