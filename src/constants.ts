@@ -5,11 +5,11 @@ export const ROUTE = {
   },
   hash: {
     name: 'hash',
-    path: ':hash',
+    path: '/:hash',
   },
   error: {
     name: '404',
-    path: ':pathMatch(.*)*',
+    path: '/:pathMatch(.*)*',
   },
 } as const;
 
