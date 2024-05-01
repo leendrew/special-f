@@ -4,6 +4,8 @@ import V1Base from './V1Base.vue';
 import type { V1SectionWordChange } from './v1.types';
 import { calcTextDuration } from '@/utils';
 
+// TODO change animation
+
 const { data } = defineProps<{ data: V1SectionWordChange }>();
 
 const [, text, targetIndex, variants] = data;
@@ -53,7 +55,7 @@ onMounted(() => {
           :initial="{
             y: -10,
             opacity: 0,
-            rotateX: -90,
+            rotateX: 90,
           }"
           :enter="{
             y: 0,
