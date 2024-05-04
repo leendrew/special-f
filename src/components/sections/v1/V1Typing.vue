@@ -16,6 +16,7 @@ const chars = text.split('');
 
 <template>
   <V1Base
+    class="text-center"
     :duration="totalDuration"
     :initial="{
       y: 0,

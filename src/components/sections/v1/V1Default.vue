@@ -11,7 +11,10 @@ const totalDuration = calcTextDuration(text);
 </script>
 
 <template>
-  <V1Base :duration="totalDuration">
+  <V1Base
+    class="text-center"
+    :duration="totalDuration"
+  >
     {{ text }}
   </V1Base>
 </template>

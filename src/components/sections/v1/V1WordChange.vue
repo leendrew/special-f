@@ -61,7 +61,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <V1Base :duration="totalDuration">
+  <V1Base
+    :class="{
+      'text-center': words.length === 1,
+    }"
+    :duration="totalDuration"
+  >
     <template v-for="(word, index) in words">
       <template v-if="index === targetIndex">
         <span class="inline-flex overflow-hidden">
