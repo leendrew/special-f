@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { useAttrs } from 'vue';
 
-const { color, bgColor } = defineProps<{ color?: string; bgColor?: string }>();
+interface AppButtonProps {
+  color?: string;
+  bgColor?: string;
+}
+
+const props = defineProps<AppButtonProps>();
 const attrs = useAttrs();
 
 const isDisabled = attrs.disabled;
@@ -12,12 +17,12 @@ const isDisabled = attrs.disabled;
     v-bind="attrs"
     class="block px-4 min-h-8 text-base outline-offset-2 rounded-md duration-200 ease-out cursor-pointer"
     :style="{
-      color,
-      backgroundColor: bgColor,
+      color: props.color,
+      backgroundColor: props.bgColor,
     }"
     :class="{
       'text-white': !color,
-      'bg-indigo-600 hover:bg-indigo-500': !bgColor,
+      'bg-indigo-600 hover:bg-indigo-500': !props.bgColor,
       'opacity-50': isDisabled,
     }"
   >

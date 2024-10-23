@@ -7,7 +7,11 @@ import V1WordChange from './V1WordChange.vue';
 import V1Typing from './V1Typing.vue';
 import type { V1Data } from './v1.types.ts';
 
-const { sectionsData } = defineProps<{ sectionsData: V1Data[2] }>();
+interface V1ResolverProps {
+  sectionsData: V1Data[2];
+}
+
+const props = defineProps<V1ResolverProps>();
 
 const motions = useMotions();
 
@@ -18,9 +22,9 @@ const v1SectionMap = {
 };
 
 const { currentStep, nextStep, prevStep, resetStep, isLastStep } = useStepper({
-  max: sectionsData.length - 1,
+  max: props.sectionsData.length - 1,
 });
-const currentSection = computed(() => sectionsData[currentStep.value]);
+const currentSection = computed(() => props.sectionsData[currentStep.value]);
 
 const isRepeatBtnShow = ref(false);
 const repeatBtnShowDelay = 1000;

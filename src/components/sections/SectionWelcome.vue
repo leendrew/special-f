@@ -2,7 +2,12 @@
 import type { WelcomeData } from './base.types';
 import { COLOR_VALUE } from '@/constants';
 
-const { text, btnTitle } = defineProps<{ text: WelcomeData[0]; btnTitle: WelcomeData[1] }>();
+interface SectionWelcomeProps {
+  text: WelcomeData[0];
+  btnTitle: WelcomeData[1];
+}
+
+const props = defineProps<SectionWelcomeProps>();
 const emit = defineEmits(['play:start']);
 
 const onPlayStart = () => emit('play:start');
@@ -10,7 +15,7 @@ const onPlayStart = () => emit('play:start');
 
 <template>
   <div class="text-center flex flex-col gap-4 p-4 rounded-lg">
-    <p>{{ text }}</p>
+    <p>{{ props.text }}</p>
     <AppButton
       class="hover:opacity-80 mt-4 self-center"
       type="submit"
@@ -18,7 +23,7 @@ const onPlayStart = () => emit('play:start');
       :bgColor="COLOR_VALUE.welcome.bg"
       @click="onPlayStart"
     >
-      {{ btnTitle }}
+      {{ props.btnTitle }}
     </AppButton>
   </div>
 </template>

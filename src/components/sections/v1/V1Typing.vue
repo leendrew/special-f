@@ -3,9 +3,13 @@ import V1Base from './V1Base.vue';
 import type { V1SectionTyping } from './v1.types';
 import { randomService } from '@/utils';
 
-const { data } = defineProps<{ data: V1SectionTyping }>();
+interface V1TypingProps {
+  data: V1SectionTyping;
+}
 
-const [, text] = data;
+const props = defineProps<V1TypingProps>();
+
+const [, text] = props.data;
 
 const charDuration = 150;
 const totalDuration = charDuration * text.length + 1500;

@@ -5,11 +5,15 @@ import V1Base from './V1Base.vue';
 import type { V1SectionWordChange } from './v1.types';
 import { calcTextDuration } from '@/utils';
 
-const { data } = defineProps<{ data: V1SectionWordChange }>();
+interface V1WordChangeProps {
+  data: V1SectionWordChange;
+}
+
+const props = defineProps<V1WordChangeProps>();
 
 const motions = useMotions();
 
-const [, text, targetIndex, variants] = data;
+const [, text, targetIndex, variants] = props.data;
 
 const variantDuration = 1500;
 const variantDelay = 500;

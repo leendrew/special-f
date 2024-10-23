@@ -3,7 +3,12 @@ import { ref, watch, nextTick, onMounted, onBeforeUnmount } from 'vue';
 import { useMotions } from '@vueuse/motion';
 import XMarkIcon from '@/components/ui/icons/XMarkIcon.vue';
 
-const props = defineProps<{ modelValue: boolean; title: string }>();
+interface AppModalProps {
+  modelValue: boolean;
+  title: string;
+}
+
+const props = defineProps<AppModalProps>();
 const emit = defineEmits(['update:modelValue']);
 
 const motions = useMotions();
