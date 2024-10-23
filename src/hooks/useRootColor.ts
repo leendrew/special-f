@@ -2,10 +2,10 @@ import { onMounted, onUnmounted } from 'vue';
 import { usePreferredDark } from '@vueuse/core';
 import { CSS_VAR } from '@/constants';
 
-type UserRootColorProps = {
+interface UserRootColorProps {
   text: string;
   bg: string;
-};
+}
 
 const COLOR_DEFAULT = {
   light: {

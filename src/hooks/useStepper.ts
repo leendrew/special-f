@@ -1,8 +1,8 @@
 import { computed, ref } from 'vue';
 
-type UseStepperProps = {
+interface UseStepperProps {
   max: number;
-};
+}
 
 export function useStepper({ max }: UseStepperProps) {
   const currentStep = ref(0);
