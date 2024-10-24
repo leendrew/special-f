@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import MainLayout from '@/components/ui/layouts/MainLayout.vue';
 import SectionsResolver from '@/components/sections/SectionsResolver.vue';
+import type { Data } from '@/components/sections/base.types';
 import { encodingService, compressService } from '@/utils';
 import { ROUTE } from '@/constants';
 
@@ -12,14 +13,14 @@ const {
 const router = useRouter();
 
 const isLoading = ref(true);
-const version = ref(null);
-const welcomeData = ref(null);
-const sectionsData = ref(null);
+const version = ref<Data[0]>(null!);
+const welcomeData = ref<Data[1]>(null!);
+const sectionsData = ref<Data[2]>(null!);
 
 const compressedBytesArray = encodingService.base64StringToArrayBuffer(hash as string);
 compressService.decompress(compressedBytesArray).then((bytesArray) => {
   const utf8String = encodingService.arrayBufferToUtf8String(bytesArray);
-  const data = JSON.parse(utf8String);
+  const data: Data = JSON.parse(utf8String);
 
   if (typeof data[0] !== 'number') {
     router.push({ name: ROUTE.error.name });
@@ -37,7 +38,6 @@ compressService.decompress(compressedBytesArray).then((bytesArray) => {
   <MainLayout>
     <AppContainer>
       <template v-if="!isLoading">
-        <!-- @vue-expect-error -->
         <SectionsResolver
           :version
           :welcomeData
