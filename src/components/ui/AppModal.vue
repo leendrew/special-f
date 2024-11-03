@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, nextTick, onMounted, onBeforeUnmount } from 'vue';
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useMotions } from '@vueuse/motion';
 import XMarkIcon from '@/components/ui/icons/XMarkIcon.vue';
 
@@ -27,9 +27,7 @@ watch(
   () => props.modelValue,
   (value) => {
     if (value) {
-      nextTick(() => {
-        onOpen();
-      });
+      onOpen();
     }
   },
 );
