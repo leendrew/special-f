@@ -93,12 +93,14 @@ onBeforeUnmount(() => {
         >
           <AppOverlay @click.self="onClose" />
           <div class="container p-6 z-10 w-full max-w-md rounded-lg shadow-lg">
-            <header class="mb-4 flex gap-2">
-              <h2 class="flex-grow text-xl">{{ props.title }}</h2>
-              <button @click="onClose">
-                <XMarkIcon class="size-6" />
-              </button>
-            </header>
+            <slot name="header">
+              <header class="mb-4 flex gap-2">
+                <h2 class="flex-grow text-xl">{{ props.title }}</h2>
+                <button @click="onClose">
+                  <XMarkIcon class="size-6" />
+                </button>
+              </header>
+            </slot>
             <slot />
             <slot name="actions">
               <footer class="mt-4">
