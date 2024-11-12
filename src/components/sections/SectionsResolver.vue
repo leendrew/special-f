@@ -6,7 +6,7 @@ import V1Resolver from './v1/V1Resolver.vue';
 import type { Data } from './base.types';
 import { COLOR_VALUE } from '@/constants';
 
-// FIX bug, if sectionsData.length === 1, repeat don't work
+// FIX: bug, if sectionsData.length === 1, repeat don't work
 
 interface SectionResolverProps {
   version: Data[0];

@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
+import { ref, watch, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import { useMotions } from '@vueuse/motion';
 import XMarkIcon from '@/components/ui/icons/XMarkIcon.vue';
+
+// FIX: on open focus with shift+tab going outside modal component
 
 interface AppModalProps {
   modelValue: boolean;
@@ -16,7 +18,11 @@ const motions = useMotions();
 const modalRef = ref<HTMLDivElement | null>(null);
 
 const onOpen = () => {
-  modalRef.value?.focus();
+  if (!modalRef.value) {
+    return;
+  }
+
+  modalRef.value.focus();
 };
 
 const onClose = () => {
@@ -26,9 +32,13 @@ const onClose = () => {
 watch(
   () => props.modelValue,
   (value) => {
-    if (value) {
-      onOpen();
+    if (!value) {
+      return;
     }
+
+    nextTick(() => {
+      onOpen();
+    });
   },
 );
 
@@ -80,7 +90,7 @@ onBeforeUnmount(() => {
           ref="modalRef"
           v-motion="'modal'"
           class="fixed inset-0 flex items-center justify-center z-50"
-          tabindex="-1"
+          :tabindex="-1"
           :initial="{
             opacity: 0,
           }"
