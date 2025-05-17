@@ -30,3 +30,5 @@ export const COLOR_VALUE = {
 } as const;
 
 export const MIN_DURATION = 1500 as const;
+
+export const LAST_VERSION = 1;

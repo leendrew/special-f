@@ -3,7 +3,7 @@ import { ref, watch, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import { useMotions } from '@vueuse/motion';
 import XMarkIcon from '@/components/ui/icons/XMarkIcon.vue';
 
-// FIX: on open focus with shift+tab going outside modal component
+// FIX: bug on open modal focus with shift+tab going outside component
 
 interface AppModalProps {
   modelValue: boolean;
