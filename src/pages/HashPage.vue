@@ -12,7 +12,7 @@ const {
 } = useRoute();
 const router = useRouter();
 
-const isLoading = ref(true);
+const isLoading = ref<boolean>(true);
 const version = ref<Data[0]>(null!);
 const welcomeData = ref<Data[1]>(null!);
 const sectionsData = ref<Data[2]>(null!);

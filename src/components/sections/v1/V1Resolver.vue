@@ -5,7 +5,7 @@ import { useStepper } from '@/hooks';
 import V1Default from './V1Default.vue';
 import V1WordChange from './V1WordChange.vue';
 import V1Typing from './V1Typing.vue';
-import type { V1Data } from './v1.types.ts';
+import type { V1Data, V1Section } from './v1.types.ts';
 
 interface V1ResolverProps {
   sectionsData: V1Data[2];
@@ -24,9 +24,9 @@ const v1SectionMap = {
 const { currentStep, nextStep, prevStep, resetStep, isLastStep } = useStepper({
   max: props.sectionsData.length - 1,
 });
-const currentSection = computed(() => props.sectionsData[currentStep.value]);
+const currentSection = computed<V1Section>(() => props.sectionsData[currentStep.value]);
 
-const isRepeatBtnShow = ref(false);
+const isRepeatBtnShow = ref<boolean>(false);
 const repeatBtnShowDelay = 1000;
 
 const onNextStep = () => {

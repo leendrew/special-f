@@ -5,9 +5,9 @@ interface UseStepperProps {
 }
 
 export function useStepper({ max }: UseStepperProps) {
-  const currentStep = ref(0);
-  const isFirstStep = computed(() => currentStep.value === 0);
-  const isLastStep = computed(() => currentStep.value === max);
+  const currentStep = ref<number>(0);
+  const isFirstStep = computed<boolean>(() => currentStep.value === 0);
+  const isLastStep = computed<boolean>(() => currentStep.value === max);
 
   const nextStep = () => {
     if (isLastStep.value) {

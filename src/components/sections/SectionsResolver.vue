@@ -24,7 +24,7 @@ const resolverMap = {
   1: V1Resolver,
 };
 
-const isPlaying = ref(false);
+const isPlaying = ref<boolean>(false);
 const onPlayStart = () => {
   isPlaying.value = true;
 };

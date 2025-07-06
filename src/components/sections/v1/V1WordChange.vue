@@ -23,16 +23,16 @@ const totalDuration = textDuration + variants.length * variantDuration + variant
 
 const words = text.split(' ');
 
-const currentIndex = ref(-1);
-const isFirstTime = computed(() => currentIndex.value === -1);
-const currentVariant = computed(() => {
+const currentIndex = ref<number>(-1);
+const isFirstTime = computed<boolean>(() => currentIndex.value === -1);
+const currentVariant = computed<string>(() => {
   if (isFirstTime.value) {
     return words[targetIndex];
   }
 
   return variants[currentIndex.value];
 });
-const enterDelay = computed(() => {
+const enterDelay = computed<number>(() => {
   if (isFirstTime.value) {
     return 0;
   }
